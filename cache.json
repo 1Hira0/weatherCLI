@@ -1,0 +1,178 @@
+{
+    "current": {
+        "london": {
+            "location": {
+                "name": "London",
+                "region": "City of London, Greater London",
+                "country": "United Kingdom",
+                "lat": 51.5171,
+                "lon": -0.1062,
+                "tz_id": "Europe/London",
+                "localtime_epoch": 1748047805,
+                "localtime": "2025-05-24 01:50"
+            },
+            "current": {
+                "last_updated_epoch": 1748047500,
+                "last_updated": "2025-05-24 01:45",
+                "temp_c": 14.2,
+                "temp_f": 57.6,
+                "is_day": 0,
+                "condition": {
+                    "text": "Partly cloudy",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/116.png"
+                },
+                "wind_kph": 13.7,
+                "precip_mm": 0.5,
+                "humidity": 82,
+                "cloud": 75,
+                "gust_mph": 12.8
+            }
+        },
+        "boston": {
+            "location": {
+                "name": "Boston",
+                "region": "Massachusetts",
+                "country": "United States of America",
+                "lat": 42.3583,
+                "lon": -71.0603,
+                "tz_id": "America/New_York",
+                "localtime_epoch": 1748048013,
+                "localtime": "2025-05-23 20:53"
+            },
+            "current": {
+                "last_updated_epoch": 1748047500,
+                "last_updated": "2025-05-23 20:45",
+                "temp_c": 11.1,
+                "temp_f": 52.0,
+                "is_day": 0,
+                "condition": {
+                    "text": "Light rain",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/296.png"
+                },
+                "wind_kph": 9.7,
+                "precip_mm": 0.0,
+                "humidity": 86,
+                "cloud": 100,
+                "gust_mph": 9.1
+            }
+        },
+        "palam, delhi": {
+            "location": {
+                "name": "Palam",
+                "region": "Delhi",
+                "country": "India",
+                "lat": 28.5667,
+                "lon": 77.1,
+                "tz_id": "Asia/Kolkata",
+                "localtime_epoch": 1748048039,
+                "localtime": "2025-05-24 06:23"
+            },
+            "current": {
+                "last_updated_epoch": 1748047500,
+                "last_updated": "2025-05-24 06:15",
+                "temp_c": 32.3,
+                "temp_f": 90.1,
+                "is_day": 1,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+                },
+                "wind_kph": 19.8,
+                "precip_mm": 0.0,
+                "humidity": 41,
+                "cloud": 11,
+                "gust_mph": 14.8
+            }
+        },
+        " delhi": {
+            "location": {
+                "name": "Delhi",
+                "region": "Ontario",
+                "country": "Canada",
+                "lat": 42.85,
+                "lon": -80.5,
+                "tz_id": "America/Toronto",
+                "localtime_epoch": 1748048077,
+                "localtime": "2025-05-23 20:54"
+            },
+            "current": {
+                "last_updated_epoch": 1748047500,
+                "last_updated": "2025-05-23 20:45",
+                "temp_c": 8.4,
+                "temp_f": 47.1,
+                "is_day": 0,
+                "condition": {
+                    "text": "Cloudy",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/119.png"
+                },
+                "wind_kph": 22.0,
+                "precip_mm": 0.0,
+                "humidity": 90,
+                "cloud": 83,
+                "gust_mph": 18.4
+            }
+        },
+        "27.59.77.250": {
+            "location": {
+                "name": "Bangalore",
+                "region": "Karnataka",
+                "country": "India",
+                "lat": 12.983,
+                "lon": 77.583,
+                "tz_id": "Asia/Kolkata",
+                "localtime_epoch": 1748106798,
+                "localtime": "2025-05-24 22:43"
+            },
+            "current": {
+                "last_updated_epoch": 1748106000,
+                "last_updated": "2025-05-24 22:30",
+                "temp_c": 23.2,
+                "temp_f": 73.8,
+                "is_day": 0,
+                "condition": {
+                    "text": "Partly cloudy",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/116.png"
+                },
+                "wind_kph": 24.1,
+                "precip_mm": 0.08,
+                "humidity": 83,
+                "cloud": 75,
+                "gust_mph": 20.6
+            }
+        },
+        "Bhubneswar": {
+            "error": {
+                "code": 1006,
+                "message": "No matching location found."
+            }
+        },
+        "Palam, New delhi": {
+            "location": {
+                "name": "Palam",
+                "region": "Delhi",
+                "country": "India",
+                "lat": 28.5667,
+                "lon": 77.1,
+                "tz_id": "Asia/Kolkata",
+                "localtime_epoch": 1748109531,
+                "localtime": "2025-05-24 23:28"
+            },
+            "current": {
+                "last_updated_epoch": 1748108700,
+                "last_updated": "2025-05-24 23:15",
+                "temp_c": 33.4,
+                "temp_f": 92.1,
+                "is_day": 0,
+                "condition": {
+                    "text": "Mist",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/143.png"
+                },
+                "wind_kph": 22.7,
+                "precip_mm": 0.01,
+                "humidity": 53,
+                "cloud": 25,
+                "gust_mph": 17.7
+            }
+        }
+    }
+}
