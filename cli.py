@@ -5,7 +5,7 @@ import requests
 def commandHandler(inp):
     inp = inp.split()
     command = inp[0][1:]
-    if command not in commands: return "Invalid command" 
+    if command not in commands: print("Invalid command")
     for i in commands:
         if command == i:
             if i in weCommands:
