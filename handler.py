@@ -44,7 +44,50 @@ def current(location:str) -> dict:
         print(f"""{"-"*35}\n{cw['time']}{cw['cond']}{"\nTemperature: "+cw['temp']['Cel']}{cw['wind']}{cw['precip']}{cw['humidity']}{cw['cloud']}{cw['utime']}\n{"-"*35}""")
     else:
         print( {'Error': r['error']['message']})
-def forecast(self, location:str):
-        pass
+
+
+def forecast(location: str):
+    method = "forecast"
+    days = 2
+
+    r = cache.get(method, location)
+    s = 200
+
+    if not r:
+        print("requesting")
+        response = requests.get(
+            f"{weather_url}/{method}.json"
+            f"?key={weatherapi_key}&q={location}&days={days}"
+        )
+        r = response.json()
+        cache.store(method, location, r)
+        s = response.status_code
+
+    if 200 <= s <= 299:
+        place = r["location"]
+        forecasts = r["forecast"]["forecastday"]
+
+        print("-" * 40)
+        print(f"Forecast for {place['name']}, {place['region']}, {place['country']}")
+        print("-" * 40)
+
+        labels = ["Today", "Tomorrow"]
+
+        for i, f in enumerate(forecasts):
+            day = f["day"]
+            label = labels[i] if i < len(labels) else f"Day {i+1}"
+
+            print(f"\n==={label} ({f['date']})===")
+            print(f"Condition: {day['condition']['text']}")
+            print(f"Max Temp: {day['maxtemp_c']}°C")
+            print(f"Min Temp: {day['mintemp_c']}°C")
+            print(f"Chance of Rain: {day['daily_chance_of_rain']}%")
+            print(f"Humidity: {day['avghumidity']}%")
+        
+        print("-" * 40)
+
+    else:
+        print({"Error": r.get("error", {}).get("message", "Unknown error")})
+
 
 

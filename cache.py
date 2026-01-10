@@ -1,35 +1,69 @@
-import os, json, time
-time.time()
+import json
+import time
+import os
 
-#not in use
-def check(method, loc) -> bool:
-    print("running check")
-    with open("cache.json", "r+") as file:
-        cache = json.load(file)
-        meth = cache[method]
-        t = (time.time() - meth[loc]['location']['localtime_epoch'] )<(900 - meth[loc]['location']['localtime_epoch']%900)
-        print(t)
-        if loc in meth and t:
-            return True
-        else: 
-            return False
+CACHE_FILE = "./cache.json"
+TTL = 900  # 15 minutes
 
-def get(method, loc):
-    print("running get")
-    with open("cache.json", "r") as file:
-        cache = json.load(file)
-        meth = cache[method]
-        if loc in meth:
-            if (time.time()>meth[loc][method]['last_updated_epoch']+900): return {}
-            return meth.get(loc)
-        else: 
+
+def _load():
+    if not os.path.exists(CACHE_FILE):
+        return {}
+    with open(CACHE_FILE, "r", encoding="utf-8") as f:
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
             return {}
 
-def store(method, loc, r):
-    print("running store")
-    with open("cache.json", "r") as file:
-        f = json.load(file)
-    with open("cache.json", "w") as file:
-        if not f: f = {method:{}}
-        f[method][loc] = r
-        file.write(json.dumps(f, indent= 4))
+
+def _save(data):
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
+
+
+def _is_valid(method, data):
+    try:
+        if method == "current":
+            ts = data["current"]["last_updated_epoch"]
+        else:  
+            ts = data["location"]["localtime_epoch"]
+        return time.time() - ts < TTL
+    except KeyError:
+        return False
+
+
+def get(method: str, loc: str):
+    cache = _load()
+
+    if method not in cache:
+        return {}
+
+    if loc not in cache[method]:
+        return {}
+
+    data = cache[method][loc]
+
+    if not _is_valid(method, data):
+        return {}
+
+    return data
+
+
+def store(method, loc, data):
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE, "r", encoding="utf-8") as file:
+            content = file.read()
+            if content.startswith("{"):
+                all_cache = json.loads(content)
+            else:
+                all_cache = {}
+    else:
+        all_cache = {}
+
+    if method not in all_cache:
+        all_cache[method] = {}
+
+    all_cache[method][loc] = data
+
+    with open(CACHE_FILE, "w", encoding="utf-8") as file:
+        json.dump(all_cache, file, indent=4)
